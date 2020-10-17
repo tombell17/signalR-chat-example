@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
-import { sign } from 'crypto';
-import { SignalRService } from './signal-r.service';
+import { SignalRService } from './services/signal-r.service';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +9,5 @@ import { SignalRService } from './signal-r.service';
 })
 export class AppComponent {  
   title = 'signalr-chat-example';
-  constructor(private signalRService: SignalRService){}
+  
 }
