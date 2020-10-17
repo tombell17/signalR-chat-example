@@ -25,6 +25,14 @@ namespace backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => {
+                options.AddPolicy("AllowAnything",
+                    builder => builder.WithOrigins("http://localhost:4200")                                      
+                                      .AllowAnyHeader()
+                                      .AllowAnyMethod()
+                                      .AllowCredentials()
+                );
+            });
             services.AddControllers();
             services.AddSignalR();
         }
@@ -32,12 +40,12 @@ namespace backend
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors("AllowAnything");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseHttpsRedirection();
+            
 
             app.UseRouting();
 
@@ -48,6 +56,7 @@ namespace backend
                 endpoints.MapControllers();
                 endpoints.MapHub<ChatHub>("/chat");
             });
+                        
         }
     }
 }
