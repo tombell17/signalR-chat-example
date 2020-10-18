@@ -12,8 +12,8 @@ export class MainChatViewComponent implements OnInit {
   constructor(private signalRService: SignalRService) { }
 
   ngOnInit(): void {
-    this.signalRService.messageReceivedEventEmitter.subscribe((message: Message) => {
-      const formattedRecievedMessage: string = `[${message.Timestamp}] - ${message.SentByUser} says: ${message.Content}`;
+    this.signalRService.messageReceivedEventEmitter.subscribe((message) => {
+      const formattedRecievedMessage: string = `[${message.timestamp}] - ${message.sentByUser} says: ${message.content}`;
 
       this.chatContent = this.chatContent + '\r\n' + formattedRecievedMessage;
     });

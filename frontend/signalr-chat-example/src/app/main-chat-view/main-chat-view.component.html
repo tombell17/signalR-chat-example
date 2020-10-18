@@ -1,6 +1,8 @@
-<textarea rows="50" cols="100" name="chatContent" ng-model='chatContent' readonly></textarea><br>
-<label>User: </label>
-<input type="text" size="10" #sentByUserInput>
-<label> Message: </label>
-<input type="text" size="25" #contentInput> 
-<input type="submit" (click)="publishMessage(sentByUserInput.value, contentInput.value)"/>
+<div>   
+    <textarea rows="50" cols="100" name="chatContent" [value]='chatContent' readonly></textarea><br>
+    <label>User: </label>
+    <input type="text" size="10" #sentByUserInput>
+    <label> Message: </label>
+    <input type="text" size="25" #contentInput> 
+    <input type="submit" (click)="publishMessage(sentByUserInput.value, contentInput.value)"/>
+</div>
